@@ -12,4 +12,4 @@ const getAllGenres = async (request, response) => {
     : response.sendStatus('Genre not found')
 }
 
-module.exports = getAllGenres
+module.exports = { getAllGenres }

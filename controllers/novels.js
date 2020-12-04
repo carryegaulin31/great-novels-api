@@ -12,4 +12,4 @@ const getAllNovels = async (request, response) => {
     : response.sendStatus('Sorry cannot find Novels')
 }
 
-module.exports = getAllNovels
+module.exports = { getAllNovels }
