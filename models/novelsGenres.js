@@ -1,4 +1,4 @@
-const novelsGenres = (connection, Sequelize, Genres, Novels) => {
+const novelsGenres = (connection, Sequelize) => {
   return connection.define('novelsGenres', {
     genreId: { type: Sequelize.INTEGER },
     novelId: { type: Sequelize.INTEGER }

@@ -10,7 +10,7 @@ const getAllAuthors = async (request, response) => {
 
 const getAuthorWithNovelAndGenre = async (request, response) => {
   const { id } = request.params
-  const authorWithNovelAndGenre = await models.Authors.findAll({
+  const authorWithNovelAndGenres = await models.Authors.findOne({
     where: { id },
     include: [{
       model: models.Novels,
@@ -18,8 +18,8 @@ const getAuthorWithNovelAndGenre = async (request, response) => {
     }]
   })
 
-  return authorWithNovelAndGenre
-    ? response.send(authorWithNovelAndGenre)
+  return authorWithNovelAndGenres
+    ? response.send(authorWithNovelAndGenres)
     : response.sendStatus('Authors not found')
 }
 

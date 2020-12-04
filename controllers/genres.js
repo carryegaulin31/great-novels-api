@@ -8,9 +8,9 @@ const getAllGenres = async (request, response) => {
     : response.sendStatus('Genre not found')
 }
 
-const getGenresById = async (request, response) => {
+const getGenresByIds = async (request, response) => {
   const { id } = request.params
-  const genreById = await models.Genres.findall({
+  const genreById = await models.Genres.findOne({
     where: { id },
     include: [{
       model: models.Novels,
@@ -23,4 +23,4 @@ const getGenresById = async (request, response) => {
     : response.sendStatus('Genres not found')
 }
 
-module.exports = { getAllGenres, getGenresById }
+module.exports = { getAllGenres, getGenresByIds }
