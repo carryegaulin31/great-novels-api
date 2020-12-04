@@ -8,4 +8,19 @@ const getAllNovels = async (request, response) => {
     : response.sendStatus('Sorry cannot find Novels')
 }
 
-module.exports = { getAllNovels }
+const getNovelsById = async (request, response) => {
+  const { id } = request.params
+  const novelById = await models.Novels.findOne({
+    where: { id },
+    include: [{
+      model: models.Authors,
+      include: [{ model: models.Genres }]
+    }]
+  })
+
+  return novelById
+    ? response.send(novelById)
+    : response.sendStatus('Cannot find novel by id')
+}
+
+module.exports = { getAllNovels, getNovelsById }

@@ -10,13 +10,15 @@ const getAllAuthors = async (request, response) => {
 }
 
 const getAllAuthorsWithNovelAndGenre = async (request, response) => {
+  const { id } = request.params
+
   const allAuthorsWithNovelAndGenre = await models.Authors.findAll({
-    include: [{ model: models.Novels && models.Genres }] // can you do that??? &&
-  })
+    where: { id },
+    include: [{ model: models.Novels,  include: model: models.Genres }]
 
   return allAuthorsWithNovelAndGenre
-    ? response.send(allAuthorsWithNovelAndGenre)
-    : response.sendStatus('Authors not found')
+  ? response.send(allAuthorsWithNovelAndGenre)
+  : response.sendStatus('Authors not found')
 }
 
 module.exports = { getAllAuthors, getAllAuthorsWithNovelAndGenre }
