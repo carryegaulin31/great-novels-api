@@ -1,5 +1,3 @@
-const { Sequelize } = require("sequelize/types")
-
 const novels = (connection, Sequelize, Authors) => {
   return connection.define('novels', {
     id: { type: Sequelize.INTEGER, auto_increment: true, primaryKey: true },

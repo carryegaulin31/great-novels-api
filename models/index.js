@@ -7,8 +7,8 @@ const connection = new Sequelize('greatBook', 'greatBook', 'bOoK', {
   host: 'localhost', dialect: 'mysql'
 })
 
-const authors = AuthorsModel(connection, Sequelize)
-const genres = GenresModel(connection, Sequelize)
-const novels = NovelsModel(connection, Sequelize)
-const novelsGenres = NovelsGenresModel(connection, Sequelize, genres, novels)
+const Authors = AuthorsModel(connection, Sequelize)
+const Genres = GenresModel(connection, Sequelize)
+const Novels = NovelsModel(connection, Sequelize)
+const NovelsGenres = NovelsGenresModel(connection, Sequelize, genres, novels)
 

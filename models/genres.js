@@ -1,7 +1,3 @@
-
-
-
-
 const genres = (connection, Sequelize) => {
   return connection.define('genres', {
     id: { type: Sequelize.INTEGER, auto_increment: true, primaryKey: true },

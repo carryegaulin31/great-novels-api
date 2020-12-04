@@ -1,12 +1,9 @@
-const { Sequelize } = require("sequelize/types")
-const genres = require("./genres")
-
-const novelsGenres = (connection, Sequelize, genres, novels) => {
+const novelsGenres = (connection, Sequelize, Genres, Novels) => {
   return connection.define('novelsGenres', {
     genreId: { type: Sequelize.INTEGER },
     novelId: { type: Sequelize.INTEGER }
   }, { paranoid: true })
-
-  module.exports = novelsGenres
-  
 }
+
+module.exports = novelsGenres
+
