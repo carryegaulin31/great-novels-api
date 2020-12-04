@@ -1,8 +1,9 @@
+DROP DATABASE greatNovels;
 CREATE DATABASE greatNovels;
 
-CREATE USER 'novels'@'localhost' IDENTIFIED BY '123';
+CREATE USER 'greatBook'@'localhost' IDENTIFIED BY 'BoOk';
 
-GRANT ALL ON greatNovels.* TO 'novels'@'localhost'; 
+GRANT ALL ON greatNovels.* TO 'greatBook'@'localhost'; 
 
 USE greatNovels;
 
@@ -30,12 +31,12 @@ CREATE TABLE authors (
 CREATE TABLE novels (
   id INT auto_increment,
   title VARCHAR(255) NOT NULL,
-  authorId VARCHAR(255),
+  authorId INT,
   createdAt DATETIME DEFAULT NOW(),
   updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
   deletedAt DATETIME,
   PRIMARY KEY(id),
-  FOREIGN KEY (authorsId) REFERENCES authors(id)
+  FOREIGN KEY (authorId) REFERENCES authors(id)
 );
 
 CREATE TABLE novelsGenres (
@@ -44,8 +45,6 @@ CREATE TABLE novelsGenres (
   createdAt DATETIME DEFAULT NOW(),
   updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
   deletedAt DATETIME,
-   PRIMARY KEY(genreId),
-    PRIMARY KEY(novelId),
   FOREIGN KEY (genreId) REFERENCES genres(id),
   FOREIGN KEY (novelId) REFERENCES novels(id)
 );
