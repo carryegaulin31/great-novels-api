@@ -16,6 +16,7 @@ const Novels = NovelsModel(connection, Sequelize, NovelsGenres)
 const Authors = AuthorsModel(connection, Sequelize, Novels)
 const Genres = GenresModel(connection, Sequelize, NovelsGenres)
 
+Novels.belongsTo(Authors)
 Authors.hasMany(Novels)
 Genres.belongsToMany(Novels, { through: NovelsGenres })
 Novels.belongsToMany(Genres, { through: NovelsGenres })
