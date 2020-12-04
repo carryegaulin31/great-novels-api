@@ -1,11 +1,8 @@
 const models = require('../models')
 
 const getAllGenres = async (request, response) => {
-  const { id } = request.params
 
-  const allGenres = await models.Genres.findAll({
-    where: { id }
-  })
+  const allGenres = await models.Genres.findAll()
 
   return allGenres
     ? response.send(allGenres)

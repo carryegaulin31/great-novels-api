@@ -1,11 +1,7 @@
 const models = require('../models')
 
 const getAllNovels = async (request, response) => {
-  const { id } = request.params
-
-  const allNovels = await models.Novels.findAll({
-    where: { id }
-  })
+  const allNovels = await models.Novels.findAll()
 
   return allNovels
     ? response.send(allNovels)
