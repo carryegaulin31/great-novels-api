@@ -11,12 +11,12 @@ const connection = new Sequelize('greatBook', 'greatBook', 'bOoK', {
   host: 'localhost', dialect: 'mysql'
 })
 
-const Authors = AuthorsModel(connection, Sequelize)
-const Genres = GenresModel(connection, Sequelize)
-const Novels = NovelsModel(connection, Sequelize)
-const NovelsGenres = NovelsGenresModel(connection, Sequelize, genres, novels)
+const NovelsGenres = NovelsGenresModel(connection, Sequelize)
+const Novels = NovelsModel(connection, Sequelize, NovelsGenres)
+const Authors = AuthorsModel(connection, Sequelize, Novels)
+const Genres = GenresModel(connection, Sequelize, NovelsGenres)
 
-Authors.hasMany(Novels, { through: Novels })
+Authors.hasMany(Novels)
 Genres.belongsToMany(Novels, { through: NovelsGenres })
 Novels.belongsToMany(Genres, { through: NovelsGenres })
 

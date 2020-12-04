@@ -3,12 +3,12 @@ const models = require('../models')
 const getAllNovels = async (request, response) => {
   const { id } = request.params
 
-  const novels = await models.Novels.findAll({
+  const allNovels = await models.Novels.findAll({
     where: { id }
   })
 
-  return novels
-    ? response.send(novels)
+  return allNovels
+    ? response.send(allNovels)
     : response.sendStatus('Sorry cannot find Novels')
 }
 

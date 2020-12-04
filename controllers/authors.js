@@ -13,7 +13,6 @@ const getAllAuthors = async (request, response) => {
 }
 
 const getAllAuthorsWithNovelAndGenre = async (request, response) => {
-
   const allAuthorsWithNovelAndGenre = await models.Authors.findAll({
     include: [{ model: models.Novels && models.Genres }] // can you do that??? &&
   })

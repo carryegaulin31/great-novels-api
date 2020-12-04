@@ -5,9 +5,9 @@ const getAllNovels = require('./controllers/novels')
 
 const app = express()
 
-app.get('/:id', getAllAuthors)
-app.get('/:id', getAllGenres)
-app.get('/:id', getAllNovels)
+app.get('/authors', getAllAuthors)
+app.get('/genres', getAllGenres)
+app.get('/novels', getAllNovels)
 app.get('/', getAllAuthorsWithNovelAndGenre)
 
 app.listen(1337, () => {

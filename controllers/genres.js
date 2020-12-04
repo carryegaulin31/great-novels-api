@@ -3,12 +3,12 @@ const models = require('../models')
 const getAllGenres = async (request, response) => {
   const { id } = request.params
 
-  const genres = await models.Genres.findAll({
-    where: { id },
+  const allGenres = await models.Genres.findAll({
+    where: { id }
   })
 
-  return genres
-    ? response.send(genres)
+  return allGenres
+    ? response.send(allGenres)
     : response.sendStatus('Genre not found')
 }
 
