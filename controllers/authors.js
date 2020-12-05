@@ -5,7 +5,7 @@ const getAllAuthors = async (request, response) => {
 
   return allAuthors
     ? response.send(allAuthors)
-    : response.sendStatus('Sorry cannot find authors')
+    : response.sendStatus(404)
 }
 
 const getAuthorWithNovelAndGenre = async (request, response) => {
@@ -20,7 +20,7 @@ const getAuthorWithNovelAndGenre = async (request, response) => {
 
   return authorWithNovelAndGenres
     ? response.send(authorWithNovelAndGenres)
-    : response.sendStatus('Authors not found')
+    : response.sendStatus(404)
 }
 
 module.exports = { getAllAuthors, getAuthorWithNovelAndGenre }

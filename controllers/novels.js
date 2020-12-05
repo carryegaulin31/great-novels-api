@@ -5,22 +5,23 @@ const getAllNovels = async (request, response) => {
 
   return allNovels
     ? response.send(allNovels)
-    : response.sendStatus('Sorry cannot find Novels')
+    : response.sendStatus(404)
 }
 
-const getNovelsById = async (request, response) => {
+const getNovelWithAuthorAndGenre = async (request, response) => {
   const { id } = request.params
-  const novelById = await models.Novels.findOne({
+  const novelWithAuthorAndGenres = await models.Novels.findOne({
     where: { id },
     include: [{
       model: models.Authors,
-      include: [{ model: models.Genres }]
+    }, {
+      model: models.Genres
     }]
   })
 
-  return novelById
-    ? response.send(novelById)
-    : response.sendStatus('Cannot find novel by id')
+  return novelWithAuthorAndGenres
+    ? response.send(novelWithAuthorAndGenres)
+    : response.sendStatus(404)
 }
 
-module.exports = { getAllNovels, getNovelsById }
+module.exports = { getAllNovels, getNovelWithAuthorAndGenre }

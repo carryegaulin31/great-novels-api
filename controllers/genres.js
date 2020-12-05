@@ -5,12 +5,12 @@ const getAllGenres = async (request, response) => {
 
   return allGenres
     ? response.send(allGenres)
-    : response.sendStatus('Genre not found')
+    : response.sendStatus(404)
 }
 
-const getGenresByIds = async (request, response) => {
+const getGenresWithNovelAndAuthor = async (request, response) => {
   const { id } = request.params
-  const genreById = await models.Genres.findOne({
+  const genreWithNovelAndAuthor = await models.Genres.findOne({
     where: { id },
     include: [{
       model: models.Novels,
@@ -18,9 +18,9 @@ const getGenresByIds = async (request, response) => {
     }]
   })
 
-  return genreById
-    ? response.send(genreById)
-    : response.sendStatus('Genres not found')
+  return genreWithNovelAndAuthor
+    ? response.send(genreWithNovelAndAuthor)
+    : response.sendStatus(404)
 }
 
-module.exports = { getAllGenres, getGenresByIds }
+module.exports = { getAllGenres, getGenresWithNovelAndAuthor }

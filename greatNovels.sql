@@ -1,11 +1,11 @@
-DROP DATABASE greatNovels;
-CREATE DATABASE greatNovels;
+DROP DATABASE novels;
+CREATE DATABASE novels;
 
-CREATE USER 'greatBook'@'localhost' IDENTIFIED BY 'BoOk';
+CREATE USER 'book'@'localhost' IDENTIFIED BY 'book';
 
-GRANT ALL ON greatNovels.* TO 'greatBook'@'localhost'; 
+GRANT ALL ON novels.* TO 'book'@'localhost';
 
-USE greatNovels;
+USE novels;
 
 
 
