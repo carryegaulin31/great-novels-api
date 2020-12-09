@@ -1,11 +1,5 @@
 module.exports = {
   up: async (queryInterface) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
-      Example:
-      return queryInterface.createTable('users', { id: Sequelize.INTEGER });
-    */
     await queryInterface.bulkInsert('genres', [
       { name: 'Adventure' },
       { name: 'African Literature' },
@@ -113,12 +107,6 @@ module.exports = {
     ])
   },
   down: async (queryInterface) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-      Example:
-      return queryInterface.dropTable('users');
-    */
     await queryInterface.bulkDelete('novelsGenres')
     await queryInterface.bulkDelete('novels')
     await queryInterface.bulkDelete('authors')
