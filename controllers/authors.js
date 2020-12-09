@@ -8,19 +8,21 @@ const getAllAuthors = async (request, response) => {
     : response.sendStatus(404)
 }
 
-const getAuthorWithNovelAndGenre = async (request, response) => {
-  const { id } = request.params
-  const authorWithNovelAndGenres = await models.Authors.findOne({
-    where: { id },
+const getAuthorByFuzz = async (request, response) => {
+  const { nameLast } = request.params
+  const authorByFuzz = await models.Authors.findAll({
+    where: {
+      nameLast: { [models.Op.like]: `%${nameLast}%` },
+    },
     include: [{
       model: models.Novels,
       include: [{ model: models.Genres }]
     }]
   })
 
-  return authorWithNovelAndGenres
-    ? response.send(authorWithNovelAndGenres)
+  return authorByFuzz
+    ? response.send(authorByFuzz)
     : response.sendStatus(404)
 }
 
-module.exports = { getAllAuthors, getAuthorWithNovelAndGenre }
+module.exports = { getAllAuthors, getAuthorByFuzz }

@@ -8,10 +8,12 @@ const getAllNovels = async (request, response) => {
     : response.sendStatus(404)
 }
 
-const getNovelWithAuthorAndGenre = async (request, response) => {
-  const { id } = request.params
-  const novelWithAuthorAndGenres = await models.Novels.findOne({
-    where: { id },
+const getNovelsByFuzz = async (request, response) => {
+  const { title } = request.params
+  const novelByFuzz = await models.Novels.findOne({
+    where: {
+      title: { [models.Op.like]: `%${title}%` }
+    },
     include: [{
       model: models.Authors,
     }, {
@@ -19,9 +21,9 @@ const getNovelWithAuthorAndGenre = async (request, response) => {
     }]
   })
 
-  return novelWithAuthorAndGenres
-    ? response.send(novelWithAuthorAndGenres)
+  return novelByFuzz
+    ? response.send(novelByFuzz)
     : response.sendStatus(404)
 }
 
-module.exports = { getAllNovels, getNovelWithAuthorAndGenre }
+module.exports = { getAllNovels, getNovelsByFuzz }
