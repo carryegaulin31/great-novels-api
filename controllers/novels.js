@@ -27,5 +27,3 @@ const getNovelsByFuzz = async (request, response) => {
 }
 
 module.exports = { getAllNovels, getNovelsByFuzz }
-
-
