@@ -8,22 +8,16 @@ const getAllAuthors = async (request, response) => {
 
 const getAuthorByFuzz = async (request, response) => {
   const { id } = request.params
-
-  const authorByFuzz = await models.Authors.findOne({
-    where: {
-      [models.Sequelize.Op.or]: [
-        { id },
-        { nameLast: { [models.Sequelize.Op.like]: `%${id}%` } },
-      ]
-    },
+  const authorWithNovelAndGenres = await models.Authors.findOne({
+    where: { id },
     include: [{
       model: models.Novels,
       include: [{ model: models.Genres }]
     }]
   })
 
-  return authorByFuzz
-    ? response.send(authorByFuzz)
+  return authorWithNovelAndGenres
+    ? response.send(authorWithNovelAndGenres)
     : response.sendStatus(404)
 }
 
