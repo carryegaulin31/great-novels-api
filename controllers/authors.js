@@ -12,6 +12,7 @@ const getAuthorByFuzz = async (request, response) => {
   const { identifier } = request.params
 
   const authorByFuzz = await models.Authors.findOne({
+    attributes: ['nameFirst', 'nameLast'],
     where: {
       [models.Sequelize.Op.or]: [
         { id: identifier },
@@ -20,7 +21,7 @@ const getAuthorByFuzz = async (request, response) => {
     },
     include: [{
       model: models.Novels,
-      include: [{ model: models.Genres }]
+      attributes: ['Title']
     }]
   })
 

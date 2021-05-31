@@ -11,14 +11,22 @@ const getAllNovels = async (request, response) => {
 const getNovelsByFuzz = async (request, response) => {
   const { identifier } = request.params
 
-  const novel = await models.Novels.findOne({
+  const novel = await models.Novels.findAll({
+    attributes: ['Title'],
     where: {
       [models.Sequelize.Op.or]: [
         { id: identifier },
         { title: { [models.Sequelize.Op.like]: `%${identifier}%` } },
       ]
     },
-    include: [{ model: models.Authors }, { model: models.Genres }]
+    include: [{
+      model: models.Authors,
+      attributes: ['nameFirst', 'nameLast']
+    }, {
+      model: models.Genres,
+      attributes: ['name'],
+      through: { attributes: [] }
+    }]
   })
 
   return novel
