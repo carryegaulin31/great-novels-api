@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize')
+const Sequelize = require('Sequelize')
 const allConfigs = require('../config/sequelize')
 const AuthorsModel = require('./authors')
 const GenresModel = require('./genres')
@@ -28,5 +28,5 @@ module.exports = {
   Genres,
   Novels,
   NovelsGenres,
-  Op: Sequelize.Op,
+  Sequelize,
 }

@@ -1,9 +1,10 @@
-const authors = (connection, Sequelize) => {
+const Authors = (connection, Sequelize) => {
   return connection.define('authors', {
-    id: { type: Sequelize.INTEGER, auto_increment: true, primaryKey: true },
-    nameFirst: { type: Sequelize.STRING },
-    nameLast: { type: Sequelize.STRING }
-  }, { paranoid: true })
+    id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
+    nameFirst: { type: Sequelize.STRING, allowNull: false },
+    nameLast: { type: Sequelize.STRING, allowNull: false },
+  })
 }
 
-module.exports = authors
+module.exports = Authors
+

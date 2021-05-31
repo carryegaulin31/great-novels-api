@@ -1,5 +1,23 @@
 module.exports = {
   up: async (queryInterface) => {
+    await queryInterface.bulkInsert('authors', [
+      { nameFirst: 'Bram', nameLast: 'Stoker' },
+      { nameFirst: 'Oscar', nameLast: 'Wilde' },
+      { nameFirst: 'Alice', nameLast: 'Walker' },
+      { nameFirst: 'Leo', nameLast: 'Tolstoy' },
+      { nameFirst: 'Charles', nameLast: 'Dickens' },
+      { nameFirst: 'Arthur', nameLast: 'Miller' },
+      { nameFirst: 'Alexandre', nameLast: 'Dumas' },
+      { nameFirst: 'Arthur Conan', nameLast: 'Doyle' },
+      { nameFirst: 'Robert Louis', nameLast: 'Stevenson' },
+      { nameFirst: 'Fyodor', nameLast: 'Dostoyevsky' },
+      { nameFirst: 'Agatha', nameLast: 'Christie' },
+      { nameFirst: 'Ray', nameLast: 'Bradbury' },
+      { nameFirst: 'George', nameLast: 'Orwell' },
+      { nameFirst: 'H.G.', nameLast: 'Wells' },
+      { nameFirst: 'Chinua', nameLast: 'Achebe' }
+    ])
+
     await queryInterface.bulkInsert('genres', [
       { name: 'Adventure' },
       { name: 'African Literature' },
@@ -18,25 +36,9 @@ module.exports = {
       { name: 'Science Fiction' },
       { name: 'Thriller' },
       { name: 'Time Travel' },
-      { name: 'War' },
+      { name: 'War' }
     ])
-    await queryInterface.bulkInsert('authors', [
-      { nameFirst: 'Bram', nameLast: 'Stoker' },
-      { nameFirst: 'Oscar', nameLast: 'Wilde' },
-      { nameFirst: 'Alice', nameLast: 'Walker' },
-      { nameFirst: 'Leo', nameLast: 'Tolstoy' },
-      { nameFirst: 'Charles', nameLast: 'Dickens' },
-      { nameFirst: 'Arthur', nameLast: 'Miller' },
-      { nameFirst: 'Alexandre', nameLast: 'Dumas' },
-      { nameFirst: 'Arthur Conan', nameLast: 'Doyle' },
-      { nameFirst: 'Robert Louis', nameLast: 'Stevenson' },
-      { nameFirst: 'Fyodor', nameLast: 'Dostoyevsky' },
-      { nameFirst: 'Agatha', nameLast: 'Christie' },
-      { nameFirst: 'Ray', nameLast: 'Bradbury' },
-      { nameFirst: 'George', nameLast: 'Orwell' },
-      { nameFirst: 'H.G.', nameLast: 'Wells' },
-      { nameFirst: 'Chinua', nameLast: 'Achebe' },
-    ])
+
     await queryInterface.bulkInsert('novels', [
       { title: 'Dracula', authorId: 1 },
       { title: 'The Picture of Dorian Gray', authorId: 2 },
@@ -52,7 +54,7 @@ module.exports = {
       { title: 'Fahrenheit 451', authorId: 12 },
       { title: 'Animal Farm', authorId: 13 },
       { title: 'The Time Machine', authorId: 14 },
-      { title: 'Things Fall Apart', authorId: 15 },
+      { title: 'Things Fall Apart', authorId: 15 }
     ])
 
     return queryInterface.bulkInsert('novelsGenres', [
@@ -103,14 +105,17 @@ module.exports = {
       { novelId: 14, genreId: 17 },
       { novelId: 15, genreId: 7 },
       { novelId: 15, genreId: 10 },
-      { novelId: 15, genreId: 2 },
+      { novelId: 15, genreId: 2 }
     ])
   },
+
   down: async (queryInterface) => {
-    await queryInterface.bulkDelete('novelsGenres')
-    await queryInterface.bulkDelete('novels')
     await queryInterface.bulkDelete('authors')
 
-    return queryInterface.bulkDelete('genres')
+    await queryInterface.bulkDelete('genres')
+
+    await queryInterface.bulkDelete('novels')
+
+    return queryInterface.bulkDelete('novelsGenres')
   }
 }

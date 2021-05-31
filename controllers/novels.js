@@ -9,21 +9,23 @@ const getAllNovels = async (request, response) => {
 }
 
 const getNovelsByFuzz = async (request, response) => {
-  const { title } = request.params
-  const novelByFuzz = await models.Novels.findOne({
+  const { identifier } = request.params
+
+  const novel = await models.Novels.findOne({
     where: {
-      title: { [models.Op.like]: `%${title}%` }
+      [models.Sequelize.Op.or]: [
+        { id: identifier },
+        { title: { [models.Sequelize.Op.like]: `%${identifier}%` } },
+      ]
     },
-    include: [{
-      model: models.Authors,
-    }, {
-      model: models.Genres
-    }]
+    include: [{ model: models.Authors }, { model: models.Genres }]
   })
 
-  return novelByFuzz
-    ? response.send(novelByFuzz)
+  return novel
+    ? response.send(novel)
     : response.sendStatus(404)
 }
 
 module.exports = { getAllNovels, getNovelsByFuzz }
+
+

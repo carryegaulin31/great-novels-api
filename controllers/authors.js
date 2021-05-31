@@ -1,18 +1,20 @@
 const models = require('../models')
 
 const getAllAuthors = async (request, response) => {
-  const allAuthors = await models.Authors.findAll()
+  const authors = await models.Authors.findAll()
 
-  return allAuthors
-    ? response.send(allAuthors)
-    : response.sendStatus(404)
+  return response.send(authors)
 }
 
 const getAuthorByFuzz = async (request, response) => {
-  const { nameLast } = request.params
-  const authorByFuzz = await models.Authors.findAll({
+  const { id } = request.params
+
+  const authorByFuzz = await models.Authors.findOne({
     where: {
-      nameLast: { [models.Op.like]: `%${nameLast}%` },
+      [models.Sequelize.Op.or]: [
+        { id },
+        { nameLast: { [models.Sequelize.Op.like]: `%${id}%` } },
+      ]
     },
     include: [{
       model: models.Novels,
