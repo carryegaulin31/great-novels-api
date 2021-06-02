@@ -5,6 +5,12 @@ const { getAllNovels, getNovelsByFuzz } = require('./controllers/novels')
 
 const app = express()
 
+app.use(express.static('public'))
+
+app.get('/', (request, response) => {
+  return response.render('index')
+})
+
 app.get('/authors', getAllAuthors)
 app.get('/authors/:identifier', getAuthorByFuzz)
 app.get('/genres', getAllGenres)
