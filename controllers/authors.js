@@ -1,7 +1,10 @@
 const models = require('../models')
 
 const getAllAuthors = async (request, response) => {
-  const allAuthors = await models.Authors.findAll()
+  const allAuthors = await models.Authors.findAll({
+    attributes: ['id', 'nameFirst', 'nameLast']
+  })
+
 
   return allAuthors
     ? response.send(allAuthors)
@@ -11,7 +14,8 @@ const getAllAuthors = async (request, response) => {
 const getAuthorByFuzz = async (request, response) => {
   const { identifier } = request.params
 
-  const authorByFuzz = await models.Authors.findOne({
+  const authorByFuzz = await models.Authors.findAll({
+    attributes: ['nameFirst', 'nameLast'],
     where: {
       [models.Sequelize.Op.or]: [
         { id: identifier },
@@ -20,7 +24,7 @@ const getAuthorByFuzz = async (request, response) => {
     },
     include: [{
       model: models.Novels,
-      include: [{ model: models.Genres }]
+      attributes: ['Title']
     }]
   })
 

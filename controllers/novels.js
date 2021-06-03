@@ -1,7 +1,9 @@
 const models = require('../models')
 
 const getAllNovels = async (request, response) => {
-  const allNovels = await models.Novels.findAll()
+  const allNovels = await models.Novels.findAll({
+    attributes: ['id', 'title']
+  })
 
   return allNovels
     ? response.send(allNovels)
@@ -11,14 +13,22 @@ const getAllNovels = async (request, response) => {
 const getNovelsByFuzz = async (request, response) => {
   const { identifier } = request.params
 
-  const novel = await models.Novels.findOne({
+  const novel = await models.Novels.findAll({
+    attributes: ['Title'],
     where: {
       [models.Sequelize.Op.or]: [
         { id: identifier },
         { title: { [models.Sequelize.Op.like]: `%${identifier}%` } },
       ]
     },
-    include: [{ model: models.Authors }, { model: models.Genres }]
+    include: [{
+      model: models.Authors,
+      attributes: ['nameFirst', 'nameLast']
+    }, {
+      model: models.Genres,
+      attributes: ['name'],
+      through: { attributes: [] }
+    }]
   })
 
   return novel
