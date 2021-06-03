@@ -23,6 +23,12 @@ a:visited {
 a:hover {
   color: darkorchid;
 }
+/* .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+} */
 
 li
 {
@@ -36,8 +42,5 @@ li
  
 }
 
-.cursor_shape {
-  cursor:pointer;
-}
 
 

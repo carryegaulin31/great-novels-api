@@ -15,14 +15,18 @@ body {background-image: url("../images/Magic-Book.jpg");
 
 a,
 a:active,
+
 a:visited {
   color: white;
   text-decoration: none;
 }
 
-a:hover {
-  color: darkorchid;
-}
+/* .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+} */
 
 li
 {
@@ -36,8 +40,5 @@ li
  
 }
 
-.cursor_shape {
-  cursor:pointer;
-}
 
 
