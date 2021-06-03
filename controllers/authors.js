@@ -5,6 +5,7 @@ const getAllAuthors = async (request, response) => {
     attributes: ['id', 'nameFirst', 'nameLast']
   })
 
+
   return allAuthors
     ? response.send(allAuthors)
     : response.sendStatus(404)
@@ -13,7 +14,7 @@ const getAllAuthors = async (request, response) => {
 const getAuthorByFuzz = async (request, response) => {
   const { identifier } = request.params
 
-  const authorByFuzz = await models.Authors.findOne({
+  const authorByFuzz = await models.Authors.findAll({
     attributes: ['nameFirst', 'nameLast'],
     where: {
       [models.Sequelize.Op.or]: [

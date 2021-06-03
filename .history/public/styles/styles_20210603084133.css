@@ -3,10 +3,10 @@ body {background-image: url("../images/Magic-Book.jpg");
   background-attachment: fixed;
   background-position: center;
   background-color:black;
-  font-family: 'Stint Ultra Condensed', cursive;
-  font-size: 40px;
+  font-family: 'Calligraffitti', cursive;
+  font-size: 30px;
   text-align: center;
-  color: darkcyan;
+  color: yellow;
   height: 100%;
   background-size: 100%;
   
@@ -35,9 +35,6 @@ li
 
 .topics {
  padding: 30px;
- font-family: 'Calligraffitti', cursive;
- font-size: 30px;
- 
 }
 
 
