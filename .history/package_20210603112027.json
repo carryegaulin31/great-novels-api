@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/stackeducation/great-novels-api/issues"
   },
-  "homepage": "https://github.com/stackeducation/great-novels-api/views/#index",
+  "homepage": "https://carryegaulin31.github.io/great-novels-api/",
   "dependencies": {
     "express": "^4.17.1",
     "mysql2": "^2.1.0",

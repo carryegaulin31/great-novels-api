@@ -41,8 +41,10 @@ li
 }
 
 .documentation {
-  font-size: 20px;
+  font-size: 15px;
   text-align: left;
   
 }
- 
+ footer {
+   color: khaki;
+ }
