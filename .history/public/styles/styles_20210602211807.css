@@ -1,17 +1,14 @@
-body {background-image: url("../images/Magic-Book.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-color:black;
+body {
+  background-image: url("../images/book.jpg");
+ background-color: black;
   font-size: 24px;
   color: yellow;
   height: 100%;
-  background-size: 100%;
-  
+  background-size: 25vw;
+  background-position: center 90%;
   background-repeat: no-repeat;
   margin: 20px;
 }
-
 a,
 a:active,
 a:hover,

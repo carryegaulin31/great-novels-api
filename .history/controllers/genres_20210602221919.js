@@ -14,17 +14,11 @@ const getGenresWithNovelAndAuthor = async (request, response) => {
   const { id } = request.params
 
   const genre = await models.Genres.findOne({
-    attributes: ['id', 'name'],
-    through: { attributes: [] },
+    attributes: 
     where: { id },
     include: [{
       model: models.Novels,
-      attributes: ['id', 'title'],
-      through: { attributes: [] },
-      include: [{
-        model: models.Authors,
-        attributes: ['nameFirst', 'nameLast']
-      }]
+      include: [{ model: models.Authors }]
     }]
   })
 
@@ -32,5 +26,4 @@ const getGenresWithNovelAndAuthor = async (request, response) => {
     ? response.send(genre)
     : response.sendStatus(404)
 }
-
 module.exports = { getAllGenres, getGenresWithNovelAndAuthor }

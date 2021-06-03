@@ -15,12 +15,11 @@ const getGenresWithNovelAndAuthor = async (request, response) => {
 
   const genre = await models.Genres.findOne({
     attributes: ['id', 'name'],
-    through: { attributes: [] },
     where: { id },
     include: [{
       model: models.Novels,
       attributes: ['id', 'title'],
-      through: { attributes: [] },
+      through: { attributes: [] }
       include: [{
         model: models.Authors,
         attributes: ['nameFirst', 'nameLast']

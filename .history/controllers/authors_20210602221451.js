@@ -1,9 +1,10 @@
 const models = require('../models')
 
 const getAllAuthors = async (request, response) => {
-  const allAuthors = await models.Authors.findAll({
-    attributes: ['id', 'nameFirst', 'nameLast']
-  })
+    
+  const allAuthors = await models.Authors.findAll() 
+    
+  }
 
   return allAuthors
     ? response.send(allAuthors)

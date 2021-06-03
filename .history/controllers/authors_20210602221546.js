@@ -5,6 +5,8 @@ const getAllAuthors = async (request, response) => {
     attributes: ['id', 'nameFirst', 'nameLast']
   })
 
+
+
   return allAuthors
     ? response.send(allAuthors)
     : response.sendStatus(404)

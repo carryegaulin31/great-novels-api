@@ -2,7 +2,7 @@ const models = require('../models')
 
 const getAllNovels = async (request, response) => {
   const allNovels = await models.Novels.findAll({
-    attributes: ['id', 'title']
+    attributes: 
   })
 
   return allNovels
