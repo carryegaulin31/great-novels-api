@@ -7,9 +7,9 @@
       "dev:migrate": "./node_modules/.bin/env-cmd ./node_modules/.bin/sequelize db:migrate --env development --config ./config/sequelize.js",
       "dev:db:create": "./node_modules/.bin/env-cmd ./node_modules/.bin/sequelize db:create --env development --config ./config/sequelize.js",
       "prod:migrate": "./node_modules/.bin/sequelize db:migrate --env production --config ./config/sequelize.js",
-      "start": "npm install && npm run prod:migrate && node index.js",
+      "start": "npm install && npm run prod:migrate && npm run dev && node index.js",
       "prod:package": "npm-pack-zip",
-      "dev":  "./node_modules/.bin/node index.js"
+      "dev":  "./node_modules/.bin/nodemon index.js"
   },
    "dependencies": {
     "body-parser": "^1.19.0",
