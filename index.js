@@ -18,7 +18,7 @@ app.get('/genres/:id', getGenresWithNovelAndAuthor)
 app.get('/novels', getAllNovels)
 app.get('/novels/:identifier', getNovelsByFuzz)
 
-const port = process.env.PORT
+const port = process.env.PORT ? process.env.PORT : 1337
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}...`) // eslint-disable-line no-console
