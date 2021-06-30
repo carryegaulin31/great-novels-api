@@ -4,12 +4,13 @@
   "private": true,
   "proxy": "http://localhost:1337/",
   "scripts": {
-    "dev": "./node_modules/.bin/env-cmd ./node_modules/.bin/nodemon index.js",
-    "dev:db:migrate": "./node_modules/.bin/env-cmd ./node_modules/.bin/sequelize db:migrate --env development --config ./config/sequelize.js",
-    "dev:db:create": "./node_modules/.bin/env-cmd ./node_modules/.bin/sequelize db:create --env development --config ./config/sequelize.js",
-    "prod:migrate": "./node_modules/.bin/sequelize db:migrate --env production --config ./config/sequelize.js",
-    "start": "npm install && npm run prod:migrate && node index.js",
-    "prod:package": "npm-pack-zip"
+      "dev:server": "./node_modules/.bin/env-cmd ./node_modules/.bin/nodemon index.js",
+      "dev:migrate": "./node_modules/.bin/env-cmd ./node_modules/.bin/sequelize db:migrate --env development --config ./config/sequelize.js",
+      "dev:db:create": "./node_modules/.bin/env-cmd ./node_modules/.bin/sequelize db:create --env development --config ./config/sequelize.js",
+      "prod:migrate": "./node_modules/.bin/sequelize db:migrate --env production --config ./config/sequelize.js",
+      "start": "npm install && npm run prod:migrate && npm run dev && node index.js",
+      "prod:package": "npm-pack-zip",
+      "dev":  "./node_modules/.bin/nodemon index.js"
   },
   "repository": {
     "type": "git",
