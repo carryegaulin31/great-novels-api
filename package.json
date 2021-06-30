@@ -10,7 +10,7 @@
       "prod:migrate": "./node_modules/.bin/sequelize db:migrate --env production --config ./config/sequelize.js",
       "start": "npm install && npm run prod:migrate && npm run dev && node index.js",
       "prod:package": "npm-pack-zip",
-      "dev":  "./node_modules/.bin/nodemon index.js"
+      "dev":  "./node_modules/.bin/node index.js"
   },
   "repository": {
     "type": "git",
