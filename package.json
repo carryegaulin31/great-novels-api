@@ -2,7 +2,6 @@
   "name": "great-novels-api",
   "version": "1.0.0",
   "private": true,
-  "proxy": "http://localhost:1337/",
   "scripts": {
       "dev:server": "./node_modules/.bin/env-cmd ./node_modules/.bin/nodemon index.js",
       "dev:migrate": "./node_modules/.bin/env-cmd ./node_modules/.bin/sequelize db:migrate --env development --config ./config/sequelize.js",
