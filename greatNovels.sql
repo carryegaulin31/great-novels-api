@@ -1,14 +1,6 @@
 DROP DATABASE novels;
 CREATE DATABASE novels;
 
-CREATE USER 'book'@'localhost' IDENTIFIED BY 'book';
-
-GRANT ALL ON novels.* TO 'book'@'localhost';
-
-USE novels;
-
-
-
 CREATE TABLE genres (
   id INT auto_increment,
   name VARCHAR(255) NOT NULL,
